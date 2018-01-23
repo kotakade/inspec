@@ -31,6 +31,7 @@ group :integration do
   gem 'kitchen-inspec', '>= 0.15.1'
   gem 'kitchen-ec2'
   gem 'kitchen-dokken'
+  gem 'train', git: 'https://github.com/chef/train.git', branch: 'ja/test-aws-gem'
 end
 
 group :tools do
