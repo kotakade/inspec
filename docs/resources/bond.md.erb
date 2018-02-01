@@ -23,7 +23,14 @@ where
 
 <br>
 
-## Examples
+## Supported Properties
+
+* ********[NEED LIST OF PROPERTIES FOR BONED NETWORK INTERFACE]*******
+mode, Transmit Hash Policy, MII Status, Up Delay (ms), Down Delay (ms), 
+
+<br>
+
+## Property Examples
 
 The following examples show how to use this InSpec audit resource.
 
@@ -45,17 +52,34 @@ The following examples show how to use this InSpec audit resource.
       its('Down Delay (ms)') { should eq '0' }
     end
 
+### content
+
+The `content` property tests if contents in the file that defines the bonded network interface match the value specified in the test. The values of the `content` matcher are arbitrary:
+
+    its('content') { should match('value') }
+
+### interfaces
+
+The `interfaces` property tests if the named secondary interfaces are available:
+
+    its('interfaces') { should eq ['eth0', 'eth1', ...] }
+
+### mode
+
+The `mode` property tests the Bonding Mode:
+
+    its('mode') { should eq 'IEEE 802.3ad Dynamic link aggregation' }
+
+### params
+
+The `params` property tests arbitrary parameters for the bonded network interface:
+
+    its('params') { should eq 'value' }
 <br>
 
 ## Matchers
 
-For a full list of available matchers please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/). 
-
-### content
-
-The `content` matcher tests if contents in the file that defines the bonded network interface match the value specified in the test. The values of the `content` matcher are arbitrary:
-
-    its('content') { should match('value') }
+This InSpec audit resource uses the following matchers. For a full list of available matchers please visit our [matchers page](https://www.inspec.io/docs/reference/matchers/).
 
 ### exist
 
@@ -69,19 +93,4 @@ The `have_interface` matcher tests if the bonded network interface has one (or m
 
     it { should have_interface }
 
-### interfaces
 
-The `interfaces` matcher tests if the named secondary interfaces are available:
-
-    its('interfaces') { should eq ['eth0', 'eth1', ...] }
-
-### mode
-The `mode` matcher tests the Bonding Mode:
-
-    its('mode') { should eq 'IEEE 802.3ad Dynamic link aggregation' }
-
-### params
-
-The `params` matcher tests arbitrary parameters for the bonded network interface:
-
-    its('params') { should eq 'value' }
